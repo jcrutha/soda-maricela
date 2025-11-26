@@ -1,0 +1,9 @@
+Categoria,Costo_Unitario_CRC,Nombre,Descripcion,Precio_CRC,Margen_CRC
+Entradas,1500,Aros de Cebolla,Crujientes aros de cebolla con salsa tártara,4000,2500
+Entradas,2000,Alitas de Pollo,Alitas de pollo bañadas en salsa BBQ,6000,4000
+Plato Fuerte,4500,Hamburguesa Clásica,"Hamburguesa de res con queso, lechuga, tomate y pepinillos",8000,3500
+Plato Fuerte,5000,Pizza Margherita,"Pizza con salsa de tomate, mozzarella y albahaca fresca",9000,4000
+Bebidas,500,Coca-Cola,Refresco de cola,1500,1000
+Bebidas,500,Jugo de Naranja,Jugo de naranja natural,2000,1500
+Postres,1000,Helado de Vainilla,Helado cremoso de vainilla,3000,2000
+Postres,1200,Cheesecake de Fresa,Pastel de queso con salsa de fresa,4500,3300

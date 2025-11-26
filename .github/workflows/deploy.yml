@@ -1,0 +1,41 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build & Deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+        env:
+          MINIO_ENDPOINT: \${{ secrets.MINIO_ENDPOINT }}
+          MINIO_PORT: \${{ secrets.MINIO_PORT }}
+          MINIO_ACCESS_KEY: \${{ secrets.MINIO_ACCESS_KEY }}
+          MINIO_SECRET_KEY: \${{ secrets.MINIO_SECRET_KEY }}
+          MINIO_BUCKET: \${{ secrets.MINIO_BUCKET }}
+          USD_EXCHANGE_RATE: \${{ secrets.USD_EXCHANGE_RATE }}
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: \${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: \${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'your-cloudflare-project-name' # TODO: Replace with your project name
+          directory: './dist'
+          gitHubToken: \${{ secrets.GITHUB_TOKEN }}
