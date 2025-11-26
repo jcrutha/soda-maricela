@@ -1,0 +1,26 @@
+{
+  "site": {
+    "title": "Soda Marcela - Quepos, Costa Rica",
+    "description": "Soda Marcela, el sabor de Costa Rica en Quepos. Desde 1988."
+  },
+  "hero": {
+    "subtitle": "Sabor auténtico de Costa Rica desde 1988",
+    "location": "Quepos, Costa Rica",
+    "menu_button": "Ver Menú"
+  },
+  "about": {
+    "title": "Bienvenidos a nuestra casa",
+    "body": "En Soda Marcela, hemos estado sirviendo con amor la auténtica comida costarricense por más de 30 años. Ubicados en el corazón de Quepos, somos un rincón de tradición y sabor donde cada plato cuenta una historia. ¡Pura Vida!"
+  },
+  "services": {
+    "title": "¿Antojo en casa?",
+    "body": "¡No te preocupes! Ofrecemos <strong>Servicio Express</strong> para que disfrutes del sabor de Soda Marcela donde sea que estés en la zona de Quepos.",
+    "order_button": "Llamar para ordenar"
+  },
+  "menu": {
+    "title": "Nuestro Menú"
+  },
+  "footer": {
+    "copyright": "Todos los derechos reservados."
+  }
+}

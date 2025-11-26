@@ -1,0 +1,15 @@
+
+> soda-marcela-temp@0.0.1 dev
+> astro dev
+
+23:47:36 [types] Generated 1ms
+23:47:36 [content] Syncing content
+23:47:36 [content] Synced content
+23:47:36 [vite] Re-optimizing dependencies because vite config has changed
+
+ astro  v5.16.1 ready in 376 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+23:47:36 watching for file changes...

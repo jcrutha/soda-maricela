@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Gallo Pinto",
+          "description": "The traditional Costa Rican breakfast with rice, beans, eggs, sweet plantain, and sour cream.",
+          "price_crc": 3500
+        },
+        {
+          "name": "Custom Omelette",
+          "description": "Two-egg omelette with your favorite ingredients, served with toast.",
+          "price_crc": 4000
+        }
+      ]
+    },
+    {
+      "name": "Casados (Lunch Specials)",
+      "items": [
+        {
+          "name": "Chicken Casado",
+          "description": "A Costa Rican classic with rice, beans, salad, sweet plantain, and a juicy grilled chicken breast.",
+          "price_crc": 5000
+        },
+        {
+          "name": "Fish Casado",
+          "description": "Fresh fish of the day, served with rice, beans, salad, and fried plantains.",
+          "price_crc": 6000
+        },
+        {
+          "name": "Steak Casado",
+          "description": "Tender steak with onions, served with rice, beans, salad, and picadillo.",
+          "price_crc": 5500
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Chorreado Coffee",
+          "description": "Authentic Costa Rican coffee, prepared the traditional way.",
+          "price_crc": 1500
+        },
+        {
+          "name": "Natural Fruit Drink",
+          "description": "Ask about our seasonal fruits: blackberry, cas, passion fruit, soursop.",
+          "price_crc": 1200
+        }
+      ]
+    }
+  ]
+}

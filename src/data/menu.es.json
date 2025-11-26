@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "name": "Desayunos",
+      "items": [
+        {
+          "name": "Gallo Pinto",
+          "description": "El tradicional desayuno costarricense con arroz, frijoles, huevos, plátano maduro y natilla.",
+          "price_crc": 3500
+        },
+        {
+          "name": "Omelette al gusto",
+          "description": "Omelette de dos huevos con tus ingredientes favoritos, acompañado de tostadas.",
+          "price_crc": 4000
+        }
+      ]
+    },
+    {
+      "name": "Casados",
+      "items": [
+        {
+          "name": "Casado de Pollo",
+          "description": "Un clásico costarricense con arroz, frijoles, ensalada, plátano maduro y una jugosa pieza de pollo a la plancha.",
+          "price_crc": 5000
+        },
+        {
+          "name": "Casado de Pescado",
+          "description": "Fresco pescado del día, acompañado de arroz, frijoles, ensalada y patacones.",
+          "price_crc": 6000
+        },
+        {
+          "name": "Casado de Bistec",
+          "description": "Suave bistec encebollado, servido con arroz, frijoles, ensalada y picadillo.",
+          "price_crc": 5500
+        }
+      ]
+    },
+    {
+      "name": "Bebidas",
+      "items": [
+        {
+          "name": "Café Chorreado",
+          "description": "El auténtico café de Costa Rica, preparado a la manera tradicional.",
+          "price_crc": 1500
+        },
+        {
+          "name": "Refresco Natural",
+          "description": "Pregunta por nuestras frutas de temporada: mora, cas, maracuyá, guanábana.",
+          "price_crc": 1200
+        }
+      ]
+    }
+  ]
+}

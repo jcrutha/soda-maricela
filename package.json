@@ -1,5 +1,5 @@
 {
-  "name": "menubuilder-astro-csv",
+  "name": "soda-marcela-temp",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.0"
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.16.1",
+    "tailwindcss": "^4.1.17"
   }
 }
