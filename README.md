@@ -1,46 +1,89 @@
-# Astro Starter Kit: Basics
+# Soda Maricela - Menubuilder Astro CSV
 
-```sh
-npm create astro@latest -- --template basics
+Proyecto Astro con integración Cloudflare Tunnel para desarrollo seguro.
+
+## 🌐 URLs en Vivo
+
+| Servicio | Dominio | Estado |
+|----------|---------|--------|
+| **Menubuilder** | https://sodamaricela.com | 🟢 En Túnel |
+| **Dokploy Terminal** | https://terminal.devforhire.pro | 🔒 Seguro |
+
+## 🚀 Inicio Rápido
+
+### Opción 1: Menú Interactivo (Recomendado)
+```bash
+./tunnel-menu.sh
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Opción 2: Comandos Directos
 
-## 🚀 Project Structure
+**Iniciar Menubuilder (Astro + Túnel):**
+```bash
+./manage-tunnel.sh start
+```
+Acceso: https://sodamaricela.com | Local: http://localhost:4321
 
-Inside of your Astro project, you'll see the following folders and files:
+**Iniciar Dokploy (Requiere Token):**
+```bash
+./manage-dokploy-tunnel.sh start dokploy-secure-2024
+```
+Acceso: https://terminal.devforhire.pro | Local: http://localhost:3000
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+**Verificar Configuración:**
+```bash
+./check-tunnel.sh
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📋 Comandos Disponibles
 
-## 🧞 Commands
+### Menubuilder
+```bash
+./manage-tunnel.sh {start|stop|status|logs}
+```
 
-All commands are run from the root of the project, from a terminal:
+### Dokploy (Seguro)
+```bash
+./manage-dokploy-tunnel.sh {start|stop|status|logs} [TOKEN]
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🧞 Comandos Astro
 
-## 👀 Want to learn more?
+| Command | Action |
+|---------|--------|
+| `npm install` | Instala dependencias |
+| `npm run dev` | Dev server local en `localhost:4321` |
+| `npm run build` | Build para producción en `./dist/` |
+| `npm run preview` | Preview del build local |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📚 Documentación
+
+- **[TUNNEL_READY.md](./TUNNEL_READY.md)** - Estado y resumen final
+- **[TUNNEL_CONFIG.md](./TUNNEL_CONFIG.md)** - Configuración detallada
+- **[TUNNEL_SETUP.md](./TUNNEL_SETUP.md)** - Setup original (referencia)
+
+## 🔐 Seguridad
+
+- ✅ Token requerido para Dokploy
+- ✅ Túnel permanente (no temporal)
+- ✅ Dominios separados
+- ✅ Credenciales encriptadas
+
+## 🐛 Troubleshooting
+
+```bash
+# Ver estado general
+./check-tunnel.sh
+
+# Ver logs detallados
+./manage-dokploy-tunnel.sh logs
+./manage-tunnel.sh logs
+
+# Probar conectividad
+curl https://sodamaricela.com
+curl https://terminal.devforhire.pro
+```
+
+## 📞 Soporte
+
+Para más información ver [TUNNEL_READY.md](./TUNNEL_READY.md)
