@@ -1,0 +1,8 @@
+:4323 {
+    root * /srv
+    try_files {path} {path}/ /index.html
+    file_server
+    encode gzip
+    
+    redir / /es/ 302
+}

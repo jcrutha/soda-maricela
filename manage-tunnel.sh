@@ -2,8 +2,8 @@
 
 # Script para gestionar solo el túnel de Cloudflare.
 TUNNEL_CONFIG="/home/naezhoq/.cloudflared/config.yml"
-PUBLIC_URL="https://sodamaricela.com"
-LOCAL_URL="http://localhost:4324"
+PUBLIC_URL="https://dev.sodamaricela.com"
+LOCAL_URL="http://localhost:4323"
 
 case "$1" in
   start)
