@@ -15,16 +15,18 @@ export default defineConfig({
   // Integración para SEO y Multi-idioma
   integrations: [sitemap({
     i18n: {
-      defaultLocale: 'es', // El idioma por defecto para el sitemap
+      defaultLocale: 'es',
       locales: {
-        es: 'es-CR', // Español (Costa Rica)
-        en: 'en-US', // Inglés (Estados Unidos)
+        es: 'es-CR',
+        en: 'en-US',
       }
     }
   })],
-
+  
+  // En producción (Docker + Caddy), esto se ignora para el build estático,
+  // pero es útil si corres 'npm run preview' localmente.
   server: {
     host: '0.0.0.0',
-    port: 4323, // Puerto fijo para evitar conflictos
+    port: 4323
   }
 });

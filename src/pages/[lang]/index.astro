@@ -19,53 +19,91 @@ const menuData = lang === 'es' ? esMenu : enMenu;
 ---
 
 <Layout lang={lang} title={ui.site.title} description={ui.site.description}>
-  <div class="absolute top-4 right-4 z-10">
-    <a href="/es/" class:list={[{'font-bold underline': lang === 'es'}, "text-white px-2 py-1"]}>ES</a>
-    <span class="text-white">|</span>
-    <a href="/en/" class:list={[{'font-bold underline': lang === 'en'}, "text-white px-2 py-1"]}>EN</a>
+  
+  <!-- Language Switcher -->
+  <div class="fixed top-4 right-4 z-50 flex gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+    <a 
+      href="/es/" 
+      class:list={[
+        'px-3 py-1 rounded-full font-semibold transition-all',
+        lang === 'es' ? 'bg-orange-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+      ]}
+    >
+      ES
+    </a>
+    <a 
+      href="/en/" 
+      class:list={[
+        'px-3 py-1 rounded-full font-semibold transition-all',
+        lang === 'en' ? 'bg-orange-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+      ]}
+    >
+      EN
+    </a>
   </div>
 
-  <main class="relative">
-    <header class="relative h-screen bg-cover bg-center" style="background-image: url('/assets/restaurant-photo.webp');">
-      <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-4">
-        <img src="/assets/logo.jpg" alt="Soda Marcela Logo" class="w-48 md:w-64 mb-4 rounded-full shadow-lg" />
-        <h1 class="text-4xl md:text-6xl font-serif font-bold mb-2">{ui.site.title.split('- ')[0]}</h1>
-        <p class="text-lg md:text-2xl font-sans" set:html={ui.hero.subtitle} />
-        <p class="text-md md:text-xl font-sans mt-2">{ui.hero.location}</p>
-        <button id="menu-button" class="mt-8 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg">
-          {ui.hero.menu_button}
-        </button>
-      </div>
-    </header>
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img 
+        src="/assets/logo.jpg" 
+        alt="Soda Marcela Logo" 
+        class="hero-logo"
+      />
+      <h1 class="hero-title">{ui.site.title.split(' - ')[0]}</h1>
+      <p class="hero-subtitle" set:html={ui.hero.subtitle} />
+      <p class="hero-location">{ui.hero.location}</p>
+      <button id="menu-button" class="hero-button">
+        <span>{ui.hero.menu_button}</span>
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </header>
 
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-serif font-bold mb-4">{ui.about.title}</h2>
-      <p class="max-w-3xl mx-auto text-lg leading-relaxed" set:html={ui.about.body} />
-    </section>
+  <!-- About Section -->
+  <section id="about" class="section-about">
+    <div class="section-container">
+      <h2 class="section-title">{ui.about.title}</h2>
+      <p class="section-text" set:html={ui.about.body} />
+    </div>
+  </section>
 
-    <section id="services" class="bg-amber-50 py-20 px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-serif font-bold mb-4">{ui.services.title}</h2>
-      <p class="max-w-3xl mx-auto text-lg leading-relaxed" set:html={ui.services.body} />
-      <a href="tel:+506XXXXXXXX" class="mt-6 inline-block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg">
-        {ui.services.order_button}
+  <!-- Services Section -->
+  <section id="services" class="section-services">
+    <div class="section-container">
+      <h2 class="section-title">{ui.services.title}</h2>
+      <p class="section-text" set:html={ui.services.body} />
+      <a href="tel:+506XXXXXXXX" class="services-button">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span>{ui.services.order_button}</span>
       </a>
-    </section>
+    </div>
+  </section>
 
-    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8 text-center">
-      <p>&copy; {new Date().getFullYear()} Soda Marcela. {ui.footer.copyright}</p>
-      <p>{ui.hero.location}</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; {new Date().getFullYear()} Soda Marcela. {ui.footer.copyright}</p>
+    <p class="footer-location">{ui.hero.location}</p>
+  </footer>
 
-    <div id="menu-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center p-4 z-50">
-      <div class="bg-amber-50 w-full max-w-4xl h-full max-h-[90vh] rounded-lg shadow-xl overflow-y-auto p-8 relative">
-        <button id="close-menu-button" class="absolute top-4 right-4 text-3xl font-bold text-gray-700 hover:text-black leading-none">&times;</button>
-        <h2 class="text-4xl font-serif font-bold text-center mb-8">{ui.menu.title}</h2>
-        <div id="menu-content">
-          <Menu menuData={menuData} />
-        </div>
+  <!-- Menu Modal -->
+  <div id="menu-modal" class="menu-modal">
+    <div class="menu-modal-content">
+      <button id="close-menu-button" class="menu-close-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="menu-wrapper">
+        <Menu menuData={menuData} />
       </div>
     </div>
-  </main>
+  </div>
 
   <script>
     const menuButton = document.getElementById('menu-button');
@@ -74,21 +112,254 @@ const menuData = lang === 'es' ? esMenu : enMenu;
 
     if (menuButton && menuModal && closeMenuButton) {
       menuButton.addEventListener('click', () => {
-        menuModal.classList.remove('hidden');
-        menuModal.classList.add('flex');
+        menuModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
 
       closeMenuButton.addEventListener('click', () => {
-        menuModal.classList.add('hidden');
-        menuModal.classList.remove('flex');
+        menuModal.classList.remove('active');
+        document.body.style.overflow = '';
       });
 
       menuModal.addEventListener('click', (event) => {
         if (event.target === menuModal) {
-          menuModal.classList.add('hidden');
-          menuModal.classList.remove('flex');
+          menuModal.classList.remove('active');
+          document.body.style.overflow = '';
         }
       });
     }
   </script>
 </Layout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background-image: url('/assets/restaurant-photo.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  }
+
+  .hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: white;
+  }
+
+  .hero-logo {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+    border: 4px solid white;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    max-width: 600px;
+  }
+
+  .hero-location {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .hero-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ea580c, #dc2626);
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+  }
+
+  .hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(234, 88, 12, 0.5);
+  }
+
+  /* Sections */
+  .section-about,
+  .section-services {
+    padding: 4rem 1rem;
+  }
+
+  .section-services {
+    background: linear-gradient(to bottom, #fef3c7, #fed7aa);
+  }
+
+  .section-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 2rem;
+  }
+
+  .services-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #ea580c, #dc2626);
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+  }
+
+  .services-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(234, 88, 12, 0.5);
+  }
+
+  /* Footer */
+  .footer {
+    background: #1f2937;
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .footer-location {
+    margin-top: 0.5rem;
+    opacity: 0.8;
+  }
+
+  /* Menu Modal */
+  .menu-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .menu-modal.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .menu-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 800px;
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .menu-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 30;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #f59e0b;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-close-button:hover {
+    background: #fef3c7;
+    transform: rotate(90deg);
+  }
+
+  .menu-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .hero-logo {
+      width: 200px;
+      height: 200px;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+    }
+
+    .section-about,
+    .section-services {
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>
