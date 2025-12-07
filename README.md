@@ -1,89 +1,70 @@
-# Soda Maricela - Menubuilder Astro CSV
+# 🥤 Soda Maricela - Infraestructura & Despliegue v2.0
 
-Proyecto Astro con integración Cloudflare Tunnel para desarrollo seguro.
+Documentación técnica de bajo nivel para el despliegue de `menubuilder-astro-csv` en arquitectura Docker Swarm-like (Docker + Traefik + Cloudflared).
 
-## 🌐 URLs en Vivo
+## 🏗 Arquitectura de Sistema
 
-| Servicio | Dominio | Estado |
-|----------|---------|--------|
-| **Menubuilder** | https://sodamaricela.com | 🟢 En Túnel |
-| **Dokploy Terminal** | https://terminal.devforhire.pro | 🔒 Seguro |
+El tráfico fluye a través de 4 capas de aislamiento. La seguridad se basa en un modelo "Zero Trust" donde ningún puerto de aplicación está expuesto a la IP pública.
 
-## 🚀 Inicio Rápido
-
-### Opción 1: Menú Interactivo (Recomendado)
-```bash
-./tunnel-menu.sh
+```mermaid
+[Internet] --(HTTPS/443)--> [Cloudflare Edge] --(Tunnel)--> [VPS: cloudflared] --(localhost:80)--> [Traefik Proxy] --(Internal Docker Network)--> [Contenedor Astro]
 ```
 
-### Opción 2: Comandos Directos
+## Componentes Core
 
-**Iniciar Menubuilder (Astro + Túnel):**
-```bash
-./manage-tunnel.sh start
-```
-Acceso: https://sodamaricela.com | Local: http://localhost:4321
+### Ingress (Cloudflared)
+Configura túnel en modo catch-all → envía tráfico a http://localhost:80.
 
-**Iniciar Dokploy (Requiere Token):**
-```bash
-./manage-dokploy-tunnel.sh start dokploy-secure-2024
-```
-Acceso: https://terminal.devforhire.pro | Local: http://localhost:3000
+### Enrutamiento (Traefik)
+Escucha en puerto 80 del host, enruta por SNI.
 
-**Verificar Configuración:**
-```bash
-./check-tunnel.sh
-```
+### Red (dokploy-network)
+Bridge aislado. Todas las apps deben vivir aquí.
 
-## 📋 Comandos Disponibles
+## 🚀 Scripts de Gestión (ubicados en $HOME)
 
-### Menubuilder
-```bash
-./manage-tunnel.sh {start|stop|status|logs}
-```
+~/deploy-dev.sh
+~/set-maintenance.sh
+~/deploy-prod.sh
 
-### Dokploy (Seguro)
-```bash
-./manage-dokploy-tunnel.sh {start|stop|status|logs} [TOKEN]
-```
+## 🔌 Conexiones Internas (DB y APIs)
 
-## 🧞 Comandos Astro
+PostgreSQL: tourpilot-postgres:5432
+Redis: dokploy-redis:6379
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Instala dependencias |
-| `npm run dev` | Dev server local en `localhost:4321` |
-| `npm run build` | Build para producción en `./dist/` |
-| `npm run preview` | Preview del build local |
+Ejemplo .env:
+DATABASE_URL=postgres://user:pass@tourpilot-postgres:5432/db_name
 
-## 📚 Documentación
+## 🔧 Despliegue Manual (Fallback)
 
-- **[TUNNEL_READY.md](./TUNNEL_READY.md)** - Estado y resumen final
-- **[TUNNEL_CONFIG.md](./TUNNEL_CONFIG.md)** - Configuración detallada
-- **[TUNNEL_SETUP.md](./TUNNEL_SETUP.md)** - Setup original (referencia)
-
-## 🔐 Seguridad
-
-- ✅ Token requerido para Dokploy
-- ✅ Túnel permanente (no temporal)
-- ✅ Dominios separados
-- ✅ Credenciales encriptadas
+docker run -d \
+  --name NOMBRE_APP \
+  --network dokploy-network \
+  --restart always \
+  -l "traefik.enable=true" \
+  -l "traefik.docker.network=dokploy-network" \
+  -l "traefik.http.routers.NOMBRE_ROUTER.rule=Host(\`tudominio.com\`)" \
+  -l "traefik.http.routers.NOMBRE_ROUTER.entrypoints=web" \
+  -l "traefik.http.services.NOMBRE_ROUTER.loadbalancer.server.port=4323" \
+  IMAGEN:TAG
 
 ## 🐛 Troubleshooting
 
-```bash
-# Ver estado general
-./check-tunnel.sh
+### Error 1033
+sudo systemctl restart cloudflared
 
-# Ver logs detallados
-./manage-dokploy-tunnel.sh logs
-./manage-tunnel.sh logs
+### 404
+Verificar labels, contenedor y red.
 
-# Probar conectividad
-curl https://sodamaricela.com
-curl https://terminal.devforhire.pro
-```
+### 502
+docker logs -f app-dev
 
-## 📞 Soporte
+### DNS roto
+CNAME → 42c09c72-9319-4eed-9b56-413bd47e1089.cfargotunnel.com
 
-Para más información ver [TUNNEL_READY.md](./TUNNEL_READY.md)
+## 📂 Directorios
+
+/etc/cloudflared/config.yml
+~/menubuilder-astro-csv/
+Dockerfile
+Caddyfile
