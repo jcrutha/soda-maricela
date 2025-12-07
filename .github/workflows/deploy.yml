@@ -4,32 +4,37 @@ on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    permissions:
+      contents: read
+      deployments: write
+      id-token: write
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build
+      - name: Build the site
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Upload to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: 'soda-marcela' # Replace with your Cloudflare Pages project name
-          directory: 'dist'
-          # Optional: target a different branch
-          # branch: 'production'
+          projectName: sodamaricela
+          directory: dist
+          branch: ${{ github.ref_name }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
