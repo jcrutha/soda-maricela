@@ -1,0 +1,58 @@
+❯ tree -I "node_modules"
+.
+├── ?
+├── astro.config.mjs
+├── Caddyfile
+├── dist
+│   ├── assets
+│   │   ├── logo.jpg
+│   │   └── restaurant-photo.webp
+│   ├── _astro
+│   │   └── index.C9JkwSZ_.css
+│   ├── en
+│   │   └── index.html
+│   ├── es
+│   │   └── index.html
+│   ├── favicon.svg
+│   ├── index.html
+│   ├── robots.txt
+│   ├── sitemap-0.xml
+│   └── sitemap-index.xml
+├── docker-compose.yml
+├── Dockerfile
+├── Dockerfile.maintenance
+├── maintenance.html
+├── package.json
+├── package-lock.json
+├── public
+│   ├── assets
+│   │   ├── logo.jpg
+│   │   └── restaurant-photo.webp
+│   ├── favicon.svg
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── assets
+│   │   ├── astro.svg
+│   │   └── background.svg
+│   ├── components
+│   │   └── Menu.astro
+│   ├── data
+│   │   ├── menu.en.json
+│   │   └── menu.es.json
+│   ├── i18n
+│   │   ├── en.json
+│   │   └── es.json
+│   ├── layouts
+│   │   ├── Layout.astro
+│   │   └── MenuLayout.astro
+│   ├── pages
+│   │   ├── index.astro
+│   │   └── [lang]
+│   │       └── index.astro
+│   └── styles
+│       └── global.css
+├── tsconfig.json
+└── wrangler.jsonc
+
+16 directories, 38 files

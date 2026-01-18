@@ -1,8 +1,16 @@
-:4323 {
+{
+    auto_https off
+}
+
+:80 {
     root * /srv
     try_files {path} {path}/ /index.html
     file_server
-    encode gzip
-    
-    redir / /es/ 302
+    encode gzip zstd
+
+    log {
+        output stdout
+        format console
+        level INFO
+    }
 }
