@@ -1,54 +1,366 @@
-{
-  "categories": [
-    {
-      "name": "Desayunos",
-      "items": [
-        {
-          "name": "Gallo Pinto",
-          "description": "El tradicional desayuno costarricense con arroz, frijoles, huevos, plátano maduro y natilla.",
-          "price_crc": 3500
-        },
-        {
-          "name": "Omelette al gusto",
-          "description": "Omelette de dos huevos con tus ingredientes favoritos, acompañado de tostadas.",
-          "price_crc": 4000
-        }
-      ]
-    },
-    {
-      "name": "Casados",
-      "items": [
-        {
-          "name": "Casado de Pollo",
-          "description": "Un clásico costarricense con arroz, frijoles, ensalada, plátano maduro y una jugosa pieza de pollo a la plancha.",
-          "price_crc": 5000
-        },
-        {
-          "name": "Casado de Pescado",
-          "description": "Fresco pescado del día, acompañado de arroz, frijoles, ensalada y patacones.",
-          "price_crc": 6000
-        },
-        {
-          "name": "Casado de Bistec",
-          "description": "Suave bistec encebollado, servido con arroz, frijoles, ensalada y picadillo.",
-          "price_crc": 5500
-        }
-      ]
-    },
-    {
-      "name": "Bebidas",
-      "items": [
-        {
-          "name": "Café Chorreado",
-          "description": "El auténtico café de Costa Rica, preparado a la manera tradicional.",
-          "price_crc": 1500
-        },
-        {
-          "name": "Refresco Natural",
-          "description": "Pregunta por nuestras frutas de temporada: mora, cas, maracuyá, guanábana.",
-          "price_crc": 1200
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"Desayuno típico costarricense",
+    "Descripción":"Gallo pinto, 2 huevos, natilla, maduro o pan",
+    "Precio CRC":4000,
+    "Margen_CRC":8
+  },
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"Pintico casero",
+    "Descripción":"Gallo Pinto con 2 huevos fritos, maduro o pan",
+    "Precio CRC":4000,
+    "Margen_CRC":8
+  },
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"El mejor pinto del mercado",
+    "Descripción":"Gallo pinto con pollo en salsa, maduro o pan\/tortilla",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"El rincón tico",
+    "Descripción":"2 huevos, tocineta, salchicha, tostada o pan",
+    "Precio CRC":4000,
+    "Margen_CRC":8
+  },
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"Omelette a la tica",
+    "Descripción":"Tortilla de huevo con jamón y queso, tostada\/pan\/tortilla",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Desayunos",
+    "Nombre":"Dulce amanecer",
+    "Descripción":"Tostadas francesas con miel de maple",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Adicionales",
+    "Nombre":"Básicos",
+    "Descripción":"Gallo pinto, natilla, tortilla, pan, huevo, queso, maduro, aguacate",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Adicionales",
+    "Nombre":"Proteínas",
+    "Descripción":"Tocineta, salchicha, salchichón, jamón, chorizo, carne\/pollo en salsa",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Adicionales",
+    "Nombre":"Premium",
+    "Descripción":"Bistec, chuleta, hígado, filete de pollo",
+    "Precio CRC":2000,
+    "Margen_CRC":4
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Casado tradicional",
+    "Descripción":"Carne o pollo en salsa, arroz, frijoles, ensalada, picadillo, maduro",
+    "Precio CRC":6000,
+    "Margen_CRC":12
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Bistec de la costa",
+    "Descripción":"Bistec, chuleta, hígado o pescado frito, arroz, ensalada, picadillo",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Pescado del día",
+    "Descripción":"Filete de pescado con guarniciones",
+    "Precio CRC":5500,
+    "Margen_CRC":11
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Casado mar y tierra",
+    "Descripción":"Res y camarones en salsa, arroz, frijoles, ensalada, maduro",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Vegetariano",
+    "Descripción":"Arroz, ensalada, frijoles, picadillo, plátano maduro",
+    "Precio CRC":5500,
+    "Margen_CRC":11
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Pescado a la parrilla",
+    "Descripción":"Pescado a la plancha con arroz, frijoles, ensalada",
+    "Precio CRC":6000,
+    "Margen_CRC":12
+  },
+  {
+    "Categoria":"Casados",
+    "Nombre":"Chuleta de cerdo",
+    "Descripción":"Chuleta con arroz, frijoles, ensalada, papas fritas (incluye té frío)",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Arroces",
+    "Nombre":"Arroz a la tica",
+    "Descripción":"Arroz con pollo tradicional",
+    "Precio CRC":4500,
+    "Margen_CRC":9
+  },
+  {
+    "Categoria":"Arroces",
+    "Nombre":"Arroz marinos",
+    "Descripción":"Arroz con camarones frescos",
+    "Precio CRC":5500,
+    "Margen_CRC":11
+  },
+  {
+    "Categoria":"Arroces",
+    "Nombre":"Arroz del océano",
+    "Descripción":"Arroz con mezcla de mariscos y salsa de mar",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Arroces",
+    "Nombre":"Arroz de la casa",
+    "Descripción":"Arroz con cerdo y sabores locales",
+    "Precio CRC":5500,
+    "Margen_CRC":11
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Pescado del puerto",
+    "Descripción":"Pescado entero con ensalada y patacones",
+    "Precio CRC":6000,
+    "Margen_CRC":12
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Camarones en salsa de ajo y limón",
+    "Descripción":"Camarones salteados con arroz y ensalada",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Pechuga de pollo al cilantro",
+    "Descripción":"Pechuga en salsa cremosa de cilantro",
+    "Precio CRC":6000,
+    "Margen_CRC":12
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Mariscos mixtos",
+    "Descripción":"Mariscos mixtos con papas fritas, ensalada, arroz",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Arroz con pollo tropical",
+    "Descripción":"Arroz con pollo y camarón, maduro, ensalada tropical",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Especiales",
+    "Nombre":"Cerdo con papas y ensalada",
+    "Descripción":"Cerdo a la plancha con papas y ensalada",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"La cuchara de maricela",
+    "Descripción":"Olla de carne con verduras y arroz",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"Sopa de mamá",
+    "Descripción":"Sopa de pollo con vegetales, arroz",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"Sopa de mariscos al coco",
+    "Descripción":"Sopa de mariscos con leche de coco",
+    "Precio CRC":6500,
+    "Margen_CRC":13
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"Sopa de verduras y pollo",
+    "Descripción":"Sopa de pollo con vegetales, arroz",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"Sopa de pescado del mar",
+    "Descripción":"Sopa costera de pescado con arroz",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Sopas",
+    "Nombre":"Sopa de frijoles con aguacate",
+    "Descripción":"Sopa negra con huevo, arroz, aguacate",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Sándwiches tradicionales",
+    "Descripción":"Carne, pollo, jamón, queso",
+    "Precio CRC":3000,
+    "Margen_CRC":6
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Empanadas caseras",
+    "Descripción":"Carne, queso, frijoles",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Gallos ticos",
+    "Descripción":"Queso, salchicha, carne, frijol, salchichón",
+    "Precio CRC":2500,
+    "Margen_CRC":5
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Burritos del mercado",
+    "Descripción":"Carne\/pollo mixto",
+    "Precio CRC":3000,
+    "Margen_CRC":6
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Salchipapas",
+    "Descripción":"Papas fritas con salchicha",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Nachos crunchy",
+    "Descripción":"Nachos con carne\/pollo o mixto",
+    "Precio CRC":4500,
+    "Margen_CRC":9
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Hamburguesa maricela",
+    "Descripción":"Hamburguesa con papas fritas",
+    "Precio CRC":4500,
+    "Margen_CRC":9
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Dedos crujientes",
+    "Descripción":"Dedos de pollo",
+    "Precio CRC":4000,
+    "Margen_CRC":8
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Dedos del mar",
+    "Descripción":"Dedos de pescado",
+    "Precio CRC":4500,
+    "Margen_CRC":9
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Quesadillas del mercado",
+    "Descripción":"Queso con pollo\/carne\/vegetales y guacamole",
+    "Precio CRC":3500,
+    "Margen_CRC":7
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Fajitas tradicionales",
+    "Descripción":"Carne, pollo o vegetales salteados",
+    "Precio CRC":3000,
+    "Margen_CRC":6
+  },
+  {
+    "Categoria":"Antojitos",
+    "Nombre":"Papas maricela",
+    "Descripción":"Papas con mayonesa casera y salsa de ajo",
+    "Precio CRC":4000,
+    "Margen_CRC":8
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Gaseosas",
+    "Descripción":"Coca Cola, Zero, Ginger Ale, Fresca, Soda",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Jugos naturales",
+    "Descripción":"Tamarindo, limón, chan, cas, maracuyá, frutas mixtas",
+    "Precio CRC":2000,
+    "Margen_CRC":4
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Batidos en leche",
+    "Descripción":"Fresa, mora, papaya, banano, guanábana, horchata, resbaladera",
+    "Precio CRC":2500,
+    "Margen_CRC":5
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Batidos en agua",
+    "Descripción":"Fresa, mora, papaya, banano, guanábana",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Café \/ té",
+    "Descripción":"Café negro o con leche \/ té",
+    "Precio CRC":1000,
+    "Margen_CRC":2
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Agua dulce",
+    "Descripción":"Agua dulce tradicional",
+    "Precio CRC":1000,
+    "Margen_CRC":2
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Chocolate",
+    "Descripción":"Chocolate caliente",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  },
+  {
+    "Categoria":"Bebidas",
+    "Nombre":"Agua dulce con leche",
+    "Descripción":"Agua dulce con leche",
+    "Precio CRC":1500,
+    "Margen_CRC":3
+  }
+]
