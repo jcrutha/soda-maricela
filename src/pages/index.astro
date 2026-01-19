@@ -1,4 +1,17 @@
 ---
-// Redirección automática al idioma por defecto
-return Astro.redirect('/es/', 302);
+// Redirección robusta para sitio estático
 ---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=/es/">
+    <script type="text/javascript">
+        window.location.href = "/es/";
+    </script>
+    <title>Redirigiendo...</title>
+</head>
+<body>
+    <p>Si no eres redirigido automáticamente, <a href="/es/">haz clic aquí</a>.</p>
+</body>
+</html>

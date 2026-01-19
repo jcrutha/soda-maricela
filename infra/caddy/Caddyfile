@@ -4,27 +4,8 @@
 
 :80 {
     root * /srv
-    
-    # Disable cache strictly during maintenance
-    header Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    header Pragma "no-cache"
-    header X-Maintenance-Mode "Active"
-
-    # Serve maintenance page for all routes
-    # But allow assets to load if they are referenced
-    @assets {
-        path /assets/* /favicon.svg /robots.txt
-    }
-    handle @assets {
-        file_server
-    }
-
-    # Everything else goes to maintenance
-    handle {
-        try_files /maintenance.html
-        file_server
-    }
-
+    try_files {path} {path}/ /index.html
+    file_server
     encode gzip zstd
 
     log {
