@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: infra/Dockerfile
-    container_name: astro-sodamaricela
+    container_name: astro-sodamaricela-dev
     restart: unless-stopped
     volumes:
       - ./infra/caddy/Caddyfile:/etc/caddy/Caddyfile
@@ -11,9 +11,9 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sodamaricela.rule=Host(`${SITE_DOMAIN}`)"
-      - "traefik.http.routers.sodamaricela.entrypoints=web"
-      - "traefik.http.services.sodamaricela.loadbalancer.server.port=80"
+      - "traefik.http.routers.sodamaricela-dev.rule=Host(`${SITE_DOMAIN}`)"
+      - "traefik.http.routers.sodamaricela-dev.entrypoints=web"
+      - "traefik.http.services.sodamaricela-dev.loadbalancer.server.port=80"
 
 networks:
   dokploy-network:
