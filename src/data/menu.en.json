@@ -1,54 +1,356 @@
 {
   "categories": [
     {
-      "name": "Breakfast",
+      "name": "Desayunos",
       "items": [
         {
-          "name": "Gallo Pinto",
-          "description": "The traditional Costa Rican breakfast with rice, beans, eggs, sweet plantain, and sour cream.",
-          "price_crc": 3500
+          "name": "Desayuno típico costarricense",
+          "description": "Gallo pinto, 2 huevos, natilla, maduro o pan",
+          "price_crc": 4000,
+          "margin_crc": 8
         },
         {
-          "name": "Custom Omelette",
-          "description": "Two-egg omelette with your favorite ingredients, served with toast.",
-          "price_crc": 4000
+          "name": "Pintico casero",
+          "description": "Gallo Pinto con 2 huevos fritos, maduro o pan",
+          "price_crc": 4000,
+          "margin_crc": 8
+        },
+        {
+          "name": "El mejor pinto del mercado",
+          "description": "Gallo pinto con pollo en salsa, maduro o pan/tortilla",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "El rincón tico",
+          "description": "2 huevos, tocineta, salchicha, tostada o pan",
+          "price_crc": 4000,
+          "margin_crc": 8
+        },
+        {
+          "name": "Omelette a la tica",
+          "description": "Tortilla de huevo con jamón y queso, tostada/pan/tortilla",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Dulce amanecer",
+          "description": "Tostadas francesas con miel de maple",
+          "price_crc": 3500,
+          "margin_crc": 7
         }
       ]
     },
     {
-      "name": "Casados (Lunch Specials)",
+      "name": "Adicionales",
       "items": [
         {
-          "name": "Chicken Casado",
-          "description": "A Costa Rican classic with rice, beans, salad, sweet plantain, and a juicy grilled chicken breast.",
-          "price_crc": 5000
+          "name": "Básicos",
+          "description": "Gallo pinto, natilla, tortilla, pan, huevo, queso, maduro, aguacate",
+          "price_crc": 1500,
+          "margin_crc": 3
         },
         {
-          "name": "Fish Casado",
-          "description": "Fresh fish of the day, served with rice, beans, salad, and fried plantains.",
-          "price_crc": 6000
+          "name": "Proteínas",
+          "description": "Tocineta, salchicha, salchichón, jamón, chorizo, carne/pollo en salsa",
+          "price_crc": 1500,
+          "margin_crc": 3
         },
         {
-          "name": "Steak Casado",
-          "description": "Tender steak with onions, served with rice, beans, salad, and picadillo.",
-          "price_crc": 5500
+          "name": "Premium",
+          "description": "Bistec, chuleta, hígado, filete de pollo",
+          "price_crc": 2000,
+          "margin_crc": 4
         }
       ]
     },
     {
-      "name": "Beverages",
+      "name": "Casados",
       "items": [
         {
-          "name": "Chorreado Coffee",
-          "description": "Authentic Costa Rican coffee, prepared the traditional way.",
-          "price_crc": 1500
+          "name": "Casado tradicional",
+          "description": "Carne o pollo en salsa, arroz, frijoles, ensalada, picadillo, maduro",
+          "price_crc": 6000,
+          "margin_crc": 12
         },
         {
-          "name": "Natural Fruit Drink",
-          "description": "Ask about our seasonal fruits: blackberry, cas, passion fruit, soursop.",
-          "price_crc": 1200
+          "name": "Bistec de la costa",
+          "description": "Bistec, chuleta, hígado o pescado frito, arroz, ensalada, picadillo",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Pescado del día",
+          "description": "Filete de pescado con guarniciones",
+          "price_crc": 5500,
+          "margin_crc": 11
+        },
+        {
+          "name": "Casado mar y tierra",
+          "description": "Res y camarones en salsa, arroz, frijoles, ensalada, maduro",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Vegetariano",
+          "description": "Arroz, ensalada, frijoles, picadillo, plátano maduro",
+          "price_crc": 5500,
+          "margin_crc": 11
+        },
+        {
+          "name": "Pescado a la parrilla",
+          "description": "Pescado a la plancha con arroz, frijoles, ensalada",
+          "price_crc": 6000,
+          "margin_crc": 12
+        },
+        {
+          "name": "Chuleta de cerdo",
+          "description": "Chuleta con arroz, frijoles, ensalada, papas fritas (incluye té frío)",
+          "price_crc": 6500,
+          "margin_crc": 13
+        }
+      ]
+    },
+    {
+      "name": "Arroces",
+      "items": [
+        {
+          "name": "Arroz a la tica",
+          "description": "Arroz con pollo tradicional",
+          "price_crc": 4500,
+          "margin_crc": 9
+        },
+        {
+          "name": "Arroz marinos",
+          "description": "Arroz con camarones frescos",
+          "price_crc": 5500,
+          "margin_crc": 11
+        },
+        {
+          "name": "Arroz del océano",
+          "description": "Arroz con mezcla de mariscos y salsa de mar",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Arroz de la casa",
+          "description": "Arroz con cerdo y sabores locales",
+          "price_crc": 5500,
+          "margin_crc": 11
+        }
+      ]
+    },
+    {
+      "name": "Especiales",
+      "items": [
+        {
+          "name": "Pescado del puerto",
+          "description": "Pescado entero con ensalada y patacones",
+          "price_crc": 6000,
+          "margin_crc": 12
+        },
+        {
+          "name": "Camarones en salsa de ajo y limón",
+          "description": "Camarones salteados con arroz y ensalada",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Pechuga de pollo al cilantro",
+          "description": "Pechuga en salsa cremosa de cilantro",
+          "price_crc": 6000,
+          "margin_crc": 12
+        },
+        {
+          "name": "Mariscos mixtos",
+          "description": "Mariscos mixtos con papas fritas, ensalada, arroz",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Arroz con pollo tropical",
+          "description": "Arroz con pollo y camarón, maduro, ensalada tropical",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Cerdo con papas y ensalada",
+          "description": "Cerdo a la plancha con papas y ensalada",
+          "price_crc": 6500,
+          "margin_crc": 13
+        }
+      ]
+    },
+    {
+      "name": "Sopas",
+      "items": [
+        {
+          "name": "La cuchara de maricela",
+          "description": "Olla de carne con verduras y arroz",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Sopa de mamá",
+          "description": "Sopa de pollo con vegetales, arroz",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Sopa de mariscos al coco",
+          "description": "Sopa de mariscos con leche de coco",
+          "price_crc": 6500,
+          "margin_crc": 13
+        },
+        {
+          "name": "Sopa de verduras y pollo",
+          "description": "Sopa de pollo con vegetales, arroz",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Sopa de pescado del mar",
+          "description": "Sopa costera de pescado con arroz",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Sopa de frijoles con aguacate",
+          "description": "Sopa negra con huevo, arroz, aguacate",
+          "price_crc": 3500,
+          "margin_crc": 7
+        }
+      ]
+    },
+    {
+      "name": "Antojitos",
+      "items": [
+        {
+          "name": "Sándwiches tradicionales",
+          "description": "Carne, pollo, jamón, queso",
+          "price_crc": 3000,
+          "margin_crc": 6
+        },
+        {
+          "name": "Empanadas caseras",
+          "description": "Carne, queso, frijoles",
+          "price_crc": 1500,
+          "margin_crc": 3
+        },
+        {
+          "name": "Gallos ticos",
+          "description": "Queso, salchicha, carne, frijol, salchichón",
+          "price_crc": 2500,
+          "margin_crc": 5
+        },
+        {
+          "name": "Burritos del mercado",
+          "description": "Carne/pollo mixto",
+          "price_crc": 3000,
+          "margin_crc": 6
+        },
+        {
+          "name": "Salchipapas",
+          "description": "Papas fritas con salchicha",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Nachos crunchy",
+          "description": "Nachos con carne/pollo o mixto",
+          "price_crc": 4500,
+          "margin_crc": 9
+        },
+        {
+          "name": "Hamburguesa maricela",
+          "description": "Hamburguesa con papas fritas",
+          "price_crc": 4500,
+          "margin_crc": 9
+        },
+        {
+          "name": "Dedos crujientes",
+          "description": "Dedos de pollo",
+          "price_crc": 4000,
+          "margin_crc": 8
+        },
+        {
+          "name": "Dedos del mar",
+          "description": "Dedos de pescado",
+          "price_crc": 4500,
+          "margin_crc": 9
+        },
+        {
+          "name": "Quesadillas del mercado",
+          "description": "Queso con pollo/carne/vegetales y guacamole",
+          "price_crc": 3500,
+          "margin_crc": 7
+        },
+        {
+          "name": "Fajitas tradicionales",
+          "description": "Carne, pollo o vegetales salteados",
+          "price_crc": 3000,
+          "margin_crc": 6
+        },
+        {
+          "name": "Papas maricela",
+          "description": "Papas con mayonesa casera y salsa de ajo",
+          "price_crc": 4000,
+          "margin_crc": 8
+        }
+      ]
+    },
+    {
+      "name": "Bebidas",
+      "items": [
+        {
+          "name": "Gaseosas",
+          "description": "Coca Cola, Zero, Ginger Ale, Fresca, Soda",
+          "price_crc": 1500,
+          "margin_crc": 3
+        },
+        {
+          "name": "Jugos naturales",
+          "description": "Tamarindo, limón, chan, cas, maracuyá, frutas mixtas",
+          "price_crc": 2000,
+          "margin_crc": 4
+        },
+        {
+          "name": "Batidos en leche",
+          "description": "Fresa, mora, papaya, banano, guanábana, horchata, resbaladera",
+          "price_crc": 2500,
+          "margin_crc": 5
+        },
+        {
+          "name": "Batidos en agua",
+          "description": "Fresa, mora, papaya, banano, guanábana",
+          "price_crc": 1500,
+          "margin_crc": 3
+        },
+        {
+          "name": "Café / té",
+          "description": "Café negro o con leche / té",
+          "price_crc": 1000,
+          "margin_crc": 2
+        },
+        {
+          "name": "Agua dulce",
+          "description": "Agua dulce tradicional",
+          "price_crc": 1000,
+          "margin_crc": 2
+        },
+        {
+          "name": "Chocolate",
+          "description": "Chocolate caliente",
+          "price_crc": 1500,
+          "margin_crc": 3
+        },
+        {
+          "name": "Agua dulce con leche",
+          "description": "Agua dulce con leche",
+          "price_crc": 1500,
+          "margin_crc": 3
         }
       ]
     }
   ]
-}
+        }
