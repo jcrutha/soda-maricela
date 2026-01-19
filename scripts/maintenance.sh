@@ -3,9 +3,10 @@
 # Script robusto para activar/desactivar modo mantenimiento
 # Usando configuración de Caddy y reconstrucción de Docker
 
-CADDY_LIVE="Caddyfile.live"
-CADDY_MAINT="Caddyfile.maintenance"
-CADDY_TARGET="Caddyfile"
+CADDY_DIR="infra/caddy"
+CADDY_LIVE="$CADDY_DIR/Caddyfile.live"
+CADDY_MAINT="$CADDY_DIR/Caddyfile.maintenance"
+CADDY_TARGET="$CADDY_DIR/Caddyfile"
 
 # Asegurar que existan los archivos de configuración
 if [ ! -f "$CADDY_LIVE" ]; then

@@ -1,10 +1,12 @@
 services:
   sodamaricela:
-    build: .
+    build:
+      context: .
+      dockerfile: infra/Dockerfile
     container_name: astro-sodamaricela
     restart: unless-stopped
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./infra/caddy/Caddyfile:/etc/caddy/Caddyfile
     networks:
       - dokploy-network
     labels:

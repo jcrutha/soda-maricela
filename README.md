@@ -1,109 +1,89 @@
-# 🥤 Soda Maricela - Infraestructura & Despliegue v2.0
+# 🥤 Soda Maricela - Guía de Administración
 
-Documentación técnica de bajo nivel para el despliegue de `menubuilder-astro-csv` en arquitectura Docker Swarm-like (Docker + Traefik + Cloudflared).
+Bienvenido al panel de control del sitio web de **Soda Maricela**. Esta guía está diseñada para ayudarle a gestionar el sitio, actualizar el menú y realizar tareas de mantenimiento sin complicaciones.
 
-## 🏗 Arquitectura de Sistema
+---
 
-El tráfico fluye a través de 4 capas de aislamiento. La seguridad se basa en un modelo "Zero Trust" donde ningún puerto de aplicación está expuesto a la IP pública.
+## 📋 Tareas Comunes (SOPs)
 
-```mermaid
-[Internet] --(HTTPS/443)--> [Cloudflare Edge] --(Tunnel)--> [VPS: cloudflared] --(localhost:80)--> [Traefik Proxy] --(Internal Docker Network)--> [Contenedor Astro]
-```
+### 1. 🛠️ Modo Mantenimiento
+Use esto cuando necesite "cerrar" el sitio web temporalmente para hacer cambios importantes o reparaciones.
 
-## Componentes Core
-
-### Ingress (Cloudflared)
-Configura túnel en modo catch-all → envía tráfico a http://localhost:80.
-
-### Enrutamiento (Traefik)
-Escucha en puerto 80 del host, enruta por SNI.
-
-### Red (dokploy-network)
-Bridge aislado. Todas las apps deben vivir aquí.
-
-## 🚀 Scripts de Gestión (ubicados en $HOME)
-
-~/deploy-dev.sh
-~/set-maintenance.sh
-~/deploy-prod.sh
-
-## 🔌 Conexiones Internas (DB y APIs)
-
-PostgreSQL: tourpilot-postgres:5432
-Redis: dokploy-redis:6379
-
-Ejemplo .env:
-DATABASE_URL=postgres://user:pass@tourpilot-postgres:5432/db_name
-
-## 🔧 Despliegue Manual (Fallback)
-
-docker run -d \
-  --name NOMBRE_APP \
-  --network dokploy-network \
-  --restart always \
-  -l "traefik.enable=true" \
-  -l "traefik.docker.network=dokploy-network" \
-  -l "traefik.http.routers.NOMBRE_ROUTER.rule=Host(\`tudominio.com\`)" \
-  -l "traefik.http.routers.NOMBRE_ROUTER.entrypoints=web" \
-  -l "traefik.http.services.NOMBRE_ROUTER.loadbalancer.server.port=4323" \
-  IMAGEN:TAG
-
-## 🐛 Troubleshooting
-
-### Error 1033
-sudo systemctl restart cloudflared
-
-### 404
-Verificar labels, contenedor y red.
-
-### 502
-docker logs -f app-dev
-
-### DNS roto
-CNAME → 42c09c72-9319-4eed-9b56-413bd47e1089.cfargotunnel.com
-
-## 🛠 Modo de Mantenimiento
-
-El sistema utiliza un cambio de configuración en el servidor web (Caddy) para manejar el modo de mantenimiento de manera robusta.
-
-### Activando Modo de Mantenimiento
-
+**Activar Mantenimiento (Cerrar sitio):**
+El sitio mostrará una página de "Estamos cocinando algo nuevo" y no será accesible.
 ```bash
 npm run maintenance_on
 ```
 
-Este comando:
-1. Cambia la configuración de Caddy para redirigir todo el tráfico a `maintenance.html`.
-2. Reconstruye el contenedor para aplicar la nueva configuración.
-3. Mantiene accesibles los recursos estáticos (imágenes, estilos).
-
-### Desactivando Modo de Mantenimiento
-
+**Desactivar Mantenimiento (Abrir sitio):**
+El sitio volverá a la normalidad y será visible para todos.
 ```bash
 npm run maintenance_off
 ```
 
-Este comando:
-1. Restaura la configuración original de Caddy.
-2. Reconstruye el contenedor para volver a servir la aplicación Astro.
+### 2. 📝 Actualizar el Menú
+El menú se maneja en archivos de texto simples. No necesita saber programar, solo siga el formato existente.
 
-### Archivos Relacionados
-- `Caddyfile.live`: Respaldo de la configuración normal.
-- `Caddyfile.maintenance`: Configuración para el modo mantenimiento.
-- `maintenance.sh`: Script de control.
-- `public/maintenance.html`: La página que ven los usuarios.
+*   **Menú en Español:** `src/data/menu.es.json`
+*   **Menú en Inglés:** `src/data/menu.en.json`
 
-### Página de Mantenimiento
+**Cómo editar:**
+1.  Abra el archivo.
+2.  Encontrará secciones como "Desayunos", "Casados", etc.
+3.  Para cambiar un precio, busque `"price_crc": 3500` y cambie el número.
+4.  Para cambiar un nombre o descripción, edite el texto entre comillas.
+    *   *Ejemplo:* `"name": "Nuevo Plato"`
 
-La página de mantenimiento (`public/maintenance.html`) es un archivo HTML simple que muestra:
-- Un mensaje informativo sobre el mantenimiento
-- El logo y nombre de "Soda Maricela"
-- Información de ubicación (Quepos, Costa Rica)
-- Diseño responsivo sin dependencias externas
+> **⚠️ Importante:** Tenga cuidado de no borrar las comas (`,`) al final de las líneas ni las llaves (`{` `}`).
 
-## 📂 Directorios
+### 3. 🖼️ Imágenes
+*   Las imágenes del sitio están en la carpeta `src/assets`.
+*   Las imágenes públicas (como logos o iconos fijos) pueden estar en `public/assets`.
 
-/etc/cloudflared/config.yml
-~/menubuilder-astro-csv/
-Dockerfile
-Caddyfile
+### 4. 🚀 Publicar Cambios
+Después de hacer cambios (como editar el menú), necesita "reconstruir" el sitio para que los clientes vean la actualización.
+
+**Comando para aplicar cambios:**
+```bash
+docker compose up -d --build
+```
+
+---
+
+## 📂 ¿Dónde está cada cosa?
+
+Aquí un mapa simple de las carpetas importantes:
+
+*   **`src/`**: ¡Aquí está todo lo importante!
+    *   `data/`: Los menús (precios, platos).
+    *   `pages/`: Las páginas del sitio web.
+    *   `components/`: Partes reusables (encabezados, pies de página).
+*   **`public/`**: Archivos que se ven directamente (robots.txt, iconos).
+*   **`scripts/`**: Herramientas automáticas (como el script de mantenimiento).
+*   **`infra/`**: Configuración de servidores (Caddy, Docker) - *Solo para técnicos*.
+*   **`archive/`**: Archivos viejos guardados por seguridad.
+
+---
+
+## ⚙️ Información Técnica (Para Desarrolladores)
+
+Esta sección contiene detalles sobre la infraestructura y despliegue para el equipo técnico.
+
+### Arquitectura
+*   **Frontend**: Astro (Estático + SSR híbrido)
+*   **Servidor Web**: Caddy (Maneja SSL y Mantenimiento)
+*   **Contenedor**: Docker
+*   **Orquestación**: Docker Compose
+
+### Comandos de Desarrollo
+*   `npm run dev`: Inicia el servidor de desarrollo local.
+*   `npm run build`: Genera el sitio estático en `dist/`.
+
+### Estructura de Mantenimiento
+El script `scripts/maintenance.sh` intercambia el archivo `Caddyfile` activo:
+1.  **Normal**: Usa `infra/caddy/Caddyfile.live`.
+2.  **Mantenimiento**: Usa `infra/caddy/Caddyfile.maintenance` (redirige todo a `maintenance.html`).
+
+### Red y Seguridad
+*   El contenedor `astro-sodamaricela` expone el puerto 80 internamente.
+*   Se recomienda usar un proxy inverso (Traefik, Nginx o Cloudflare Tunnel) frente al contenedor.

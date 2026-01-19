@@ -7,8 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "maintenance_on": "./maintenance.sh on",
-    "maintenance_off": "./maintenance.sh off"
+    "maintenance_on": "./scripts/maintenance.sh on",
+    "maintenance_off": "./scripts/maintenance.sh off"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

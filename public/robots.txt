@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://your-domain.com/sitemap-index.xml
+Sitemap: https://sodamaricela.com/sitemap-index.xml
