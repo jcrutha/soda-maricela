@@ -11,7 +11,7 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sodamaricela.rule=Host(`dev.sodamaricela.com`) || Host(`sodamaricela.com`)"
+      - "traefik.http.routers.sodamaricela.rule=Host(`${SITE_DOMAIN}`)"
       - "traefik.http.routers.sodamaricela.entrypoints=web"
       - "traefik.http.services.sodamaricela.loadbalancer.server.port=80"
 
