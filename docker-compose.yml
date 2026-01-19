@@ -3,6 +3,8 @@ services:
     build: .
     container_name: astro-sodamaricela
     restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
     networks:
       - dokploy-network
     labels:

@@ -62,6 +62,45 @@ docker logs -f app-dev
 ### DNS roto
 CNAME → 42c09c72-9319-4eed-9b56-413bd47e1089.cfargotunnel.com
 
+## 🛠 Modo de Mantenimiento
+
+El sistema utiliza un cambio de configuración en el servidor web (Caddy) para manejar el modo de mantenimiento de manera robusta.
+
+### Activando Modo de Mantenimiento
+
+```bash
+npm run maintenance_on
+```
+
+Este comando:
+1. Cambia la configuración de Caddy para redirigir todo el tráfico a `maintenance.html`.
+2. Reconstruye el contenedor para aplicar la nueva configuración.
+3. Mantiene accesibles los recursos estáticos (imágenes, estilos).
+
+### Desactivando Modo de Mantenimiento
+
+```bash
+npm run maintenance_off
+```
+
+Este comando:
+1. Restaura la configuración original de Caddy.
+2. Reconstruye el contenedor para volver a servir la aplicación Astro.
+
+### Archivos Relacionados
+- `Caddyfile.live`: Respaldo de la configuración normal.
+- `Caddyfile.maintenance`: Configuración para el modo mantenimiento.
+- `maintenance.sh`: Script de control.
+- `public/maintenance.html`: La página que ven los usuarios.
+
+### Página de Mantenimiento
+
+La página de mantenimiento (`public/maintenance.html`) es un archivo HTML simple que muestra:
+- Un mensaje informativo sobre el mantenimiento
+- El logo y nombre de "Soda Maricela"
+- Información de ubicación (Quepos, Costa Rica)
+- Diseño responsivo sin dependencias externas
+
 ## 📂 Directorios
 
 /etc/cloudflared/config.yml
