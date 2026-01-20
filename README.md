@@ -21,20 +21,28 @@ El sitio volverá a la normalidad y será visible para todos.
 npm run maintenance_off
 ```
 
-### 2. 📝 Actualizar el Menú
-El menú se maneja en archivos de texto simples. No necesita saber programar, solo siga el formato existente.
+### 2. 📝 Actualizar el Menú y PDF
+El menú se maneja en archivos de texto simples (JSON). Cuando usted actualiza estos archivos y reconstruye el sitio, **los archivos PDF descargables se generan automáticamente**.
 
 *   **Menú en Español:** `src/data/menu.es.json`
 *   **Menú en Inglés:** `src/data/menu.en.json`
 
 **Cómo editar:**
-1.  Abra el archivo.
-2.  Encontrará secciones como "Desayunos", "Casados", etc.
+1.  Abra el archivo correspondiente.
+2.  Encontrará secciones como `"Desayunos"`, `"Casados"`, etc.
 3.  Para cambiar un precio, busque `"price_crc": 3500` y cambie el número.
 4.  Para cambiar un nombre o descripción, edite el texto entre comillas.
     *   *Ejemplo:* `"name": "Nuevo Plato"`
 
-> **⚠️ Importante:** Tenga cuidado de no borrar las comas (`,`) al final de las líneas ni las llaves (`{` `}`).
+**Generación de PDF:**
+*   El sistema usa un script automático (`scripts/generate-pdf.js`) que convierte estos archivos JSON en PDFs profesionales.
+*   **Características del PDF:**
+    *   Diseño limpio sin páginas en blanco.
+    *   Agrupación inteligente para no cortar categorías.
+    *   Compatibilidad total (texto seleccionable, caracteres internacionales).
+    *   Nombres de archivo: `menu_maricela_es.pdf` y `menu_maricela_en.pdf`.
+
+> **⚠️ Importante:** Tenga cuidado de no borrar las comas (`,`) al final de las líneas ni las llaves (`{` `}`). Si el JSON tiene errores, el PDF no se generará.
 
 ### 3. 🖼️ Imágenes
 *   Las imágenes del sitio están en la carpeta `src/assets`.

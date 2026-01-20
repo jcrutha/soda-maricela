@@ -3,9 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npm run generate-pdf && astro dev",
+    "predev": "npm run generate-pdf",
+    "dev": "astro dev",
     "generate-pdf": "node scripts/generate-pdf.js",
-    "build": "npm run generate-pdf && astro build",
+    "prebuild": "npm run generate-pdf",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "maintenance_on": "./scripts/maintenance.sh on",
