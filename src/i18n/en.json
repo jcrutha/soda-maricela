@@ -1,26 +1,48 @@
 {
   "site": {
-    "title": "Soda Marcela - Quepos, Costa Rica",
-    "description": "Soda Marcela, a taste of Costa Rica in Quepos. Since 1988."
+    "title": "Soda Maricela - Authentic Local Food in Manuel Antonio",
+    "description": "Experience real Costa Rican food at Soda Maricela. Best Casado & Gallo Pinto in Manuel Antonio. Located 20m from the bus station, look for the Sloth Mural!",
+    "map_links": {
+      "google_maps": "https://www.google.com/maps/search/?api=1&query=Soda+Maricela+Manuel+Antonio",
+      "waze": "https://www.waze.com/es/live-map/directions/cr/provincia-de-puntarenas/quepos/soda-maricela?to=place.ChIJz1fZe7ZzoY8RJm445tDKbDA"
+    }
   },
   "hero": {
-    "subtitle": "Authentic Costa Rican flavor since 1988",
-    "location": "Quepos, Costa Rica",
-    "menu_button": "View Menu"
+    "subtitle": "Authentic Costa Rican flavor. The hidden gem locals love, just steps from the bus.",
+    "location": "20m from Manuel Antonio Bus Station, Quepos",
+    "menu_button": "View Our Menu"
   },
-  "about": {
-    "title": "Welcome to our home",
-    "body": "At Soda Marcela, we have been lovingly serving authentic Costa Rican food for over 30 years. Located in the heart of Quepos, we are a corner of tradition and flavor where every dish tells a story. Pura Vida!"
-  },
-  "services": {
-    "title": "Craving at home?",
-    "body": "Don't worry! We offer <strong>Express Service</strong> so you can enjoy the taste of Soda Marcela wherever you are in the Quepos area.",
-    "order_button": "Call to Order"
-  },
-  "menu": {
-    "title": "Our Menu"
+  "bento": {
+    "location": {
+      "title": "Look for the Sloth",
+      "body": "We are the small restaurant with the <strong>sloth painted on the wall</strong>. Just 20 meters from the bus station. Real food, local prices.",
+      "google_maps_button": "View on Google Maps",
+      "waze_button": "Navigate with Waze"
+    },
+    "founder": {
+      "title": "Meet Doña Maricela",
+      "body": "For decades, Doña Maricela has been cooking with love for locals and travelers alike. Here, you aren't just a tourist; you're family. Taste the tradition that powers Manuel Antonio.",
+      "tag": "The Founder"
+    },
+    "food_casado": {
+      "title": "The Famous Casado",
+      "body": "Rice, beans, sweet plantains, fresh salad, and your choice of meat. The ultimate fuel for your hike in the National Park.",
+      "tag": "Must Try"
+    },
+    "food_pinto": {
+      "title": "Gallo Pinto Power",
+      "body": "The quintessential Costa Rican breakfast. Spotted rooster rice & beans. Perfect before hitting the beach.",
+      "tag": "Best Breakfast"
+    },
+    "reviews": {
+      "title": "Travelers Love Us",
+      "quote": "The best authentic meal I had in Costa Rica! Cheap and delicious."
+    }
   },
   "footer": {
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "cta_title": "Hungry yet?",
+    "cta_button_google": "Find us on Google Maps",
+    "cta_button_waze": "Navigate with Waze"
   }
 }

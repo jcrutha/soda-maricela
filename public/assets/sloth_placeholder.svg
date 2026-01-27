@@ -1,0 +1,32 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A7F3D0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#sky)"/>
+  <!-- Branch -->
+  <path d="M0 100 Q 200 150 400 80" stroke="#5D4037" stroke-width="20" fill="none"/>
+  <!-- Sloth Body -->
+  <ellipse cx="200" cy="140" rx="60" ry="45" fill="#8D6E63" />
+  <!-- Head -->
+  <circle cx="150" cy="130" r="30" fill="#A1887F" />
+  <!-- Face Mask -->
+  <circle cx="150" cy="130" r="22" fill="#D7CCC8" />
+  <!-- Eyes -->
+  <ellipse cx="142" cy="125" rx="5" ry="8" fill="#5D4037" />
+  <ellipse cx="158" cy="125" rx="5" ry="8" fill="#5D4037" />
+  <circle cx="142" cy="125" r="2" fill="black" />
+  <circle cx="158" cy="125" r="2" fill="black" />
+  <!-- Nose -->
+  <circle cx="150" cy="138" r="4" fill="#3E2723" />
+  <!-- Smile -->
+  <path d="M145 145 Q 150 150 155 145" stroke="black" stroke-width="2" fill="none"/>
+  <!-- Limbs hanging -->
+  <path d="M180 120 Q 180 100 200 100" stroke="#8D6E63" stroke-width="15" fill="none" />
+  <path d="M220 120 Q 240 100 260 110" stroke="#8D6E63" stroke-width="15" fill="none" />
+  <!-- Claws -->
+  <path d="M150 100 L 150 80" stroke="#D7CCC8" stroke-width="4" />
+  <path d="M260 110 L 260 90" stroke="#D7CCC8" stroke-width="4" />
+</svg>

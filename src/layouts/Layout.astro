@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+import TourPopup from '../components/TourPopup.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -27,5 +29,6 @@ const { title, description, lang } = Astro.props;
   </head>
   <body class="font-['Inter'] antialiased overflow-x-hidden">
     <slot />
+    <TourPopup lang={lang} />
   </body>
 </html>

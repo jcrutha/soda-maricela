@@ -1,26 +1,47 @@
 {
   "site": {
-    "title": "Soda Marcela - Quepos, Costa Rica",
-    "description": "Soda Marcela, el sabor de Costa Rica en Quepos. Desde 1988."
+    "title": "Soda Maricela - La Mejor Comida Típica en Manuel Antonio",
+    "description": "Descubre el auténtico sabor tico en Soda Maricela. Casados, Gallo Pinto y comida casera a 20m de la parada de bus en Manuel Antonio. ¡Busca el mural del perezoso!",
+    "map_links": {
+      "google_maps": "https://www.google.com/maps/search/?api=1&query=Soda+Maricela+Manuel+Antonio",
+      "waze": "https://www.waze.com/es/live-map/directions/cr/provincia-de-puntarenas/quepos/soda-maricela?to=place.ChIJz1fZe7ZzoY8RJm445tDKbDA"
+    }
   },
   "hero": {
-    "subtitle": "Sabor auténtico de Costa Rica desde 1988",
-    "location": "Quepos, Costa Rica",
-    "menu_button": "Ver Menú"
+    "subtitle": "El verdadero sabor de hogar, justo donde empieza tu aventura en Manuel Antonio.",
+    "location": "A 20m de la parada de bus de Manuel Antonio, Quepos",
+    "menu_button": "Ver Menú Delicioso"
   },
-  "about": {
-    "title": "Bienvenidos a nuestra casa",
-    "body": "En Soda Marcela, hemos estado sirviendo con amor la auténtica comida costarricense por más de 30 años. Ubicados en el corazón de Quepos, somos un rincón de tradición y sabor donde cada plato cuenta una historia. ¡Pura Vida!"
-  },
-  "services": {
-    "title": "¿Antojo en casa?",
-    "body": "¡No te preocupes! Ofrecemos <strong>Servicio Express</strong> para que disfrutes del sabor de Soda Marcela donde sea que estés en la zona de Quepos.",
-    "order_button": "Llamar para ordenar"
-  },
-  "menu": {
-    "title": "Nuestro Menú"
+  "bento": {
+    "location": {
+      "title": "Busca el Perezoso",
+      "body": "Somos el pequeño restaurante con el <strong>perezoso pintado en la pared</strong>. Justo a 20 metros de la parada de buses. Comida real, precios ticos.",
+      "google_maps_button": "Ver en Google Maps",
+      "waze_button": "Navegar con Waze"
+    },
+    "founder": {
+      "title": "La Mano de Doña Maricela",
+      "body": "Por décadas, Doña Maricela ha cocinado con el corazón para locales y visitantes. Aquí no eres un turista más, eres familia. Ven y prueba la sazón que ha alimentado a generaciones de Quepos."
+    },
+    "food_casado": {
+      "title": "El Casado Legendario",
+      "body": "Arroz, frijoles, plátano maduro, ensalada fresca y tu elección de carne. El almuerzo que te da energía para todo el día en el parque nacional.",
+      "tag": "El Favorito"
+    },
+    "food_pinto": {
+      "title": "Gallo Pinto de Campeones",
+      "body": "El desayuno tico por excelencia. Perfecto antes de ir a la playa o al parque. Sabor auténtico que te hará volver.",
+      "tag": "Desayuno Típico"
+    },
+    "reviews": {
+      "title": "Lo que dicen los viajeros",
+      "quote": "¡La mejor comida de mi viaje! Auténtica y a buen precio."
+    }
   },
   "footer": {
-    "copyright": "Todos los derechos reservados."
+    "copyright": "Todos los derechos reservados.",
+    "cta_title": "¿Listo para comer rico?",
+    "cta_button_google": "Encuéntranos en Google Maps",
+    "cta_button_waze": "Navegar con Waze"
   }
 }

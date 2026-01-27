@@ -1,0 +1,751 @@
+---
+// TourPopup.astro - PARTE 1: HTML/TEMPLATE
+// Enterprise Grade Widget with Sloth-themed Audio
+---
+
+<div id="tour-widget-root" class="fixed bottom-4 left-4 z-[9999] font-sans pointer-events-none" role="complementary" aria-label="Manuel Antonio Tour Info">
+
+  <!-- 1. Minimized State (Floating Action Button) -->
+  <button id="widget-trigger" class="pointer-events-auto transform translate-y-20 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group flex items-center gap-3 bg-white/90 backdrop-blur-md border border-emerald-100 px-1 py-1 pr-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:scale-105" aria-label="Open Tour Info">
+    <div class="relative w-10 h-10 rounded-full bg-emerald-100 overflow-hidden shrink-0">
+        <img src="/assets/sloth_placeholder.svg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Sloth Icon">
+    </div>
+    <div class="flex flex-col items-start">
+        <span class="text-[10px] uppercase font-bold text-emerald-600 tracking-wider">Manuel Antonio</span>
+        <span id="trigger-label" class="text-xs font-semibold text-gray-800 leading-none">Tour Guide</span>
+    </div>
+  </button>
+
+  <!-- 2. Expanded Card State -->
+  <div id="widget-card" class="pointer-events-auto absolute bottom-0 left-0 w-[280px] bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-gray-100 overflow-hidden transform scale-95 opacity-0 translate-y-10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-bottom-left">
+
+    <!-- Controls (Top Right) -->
+    <div class="absolute top-2 right-2 z-20 flex gap-1">
+        <button id="btn-minimize" class="p-1.5 rounded-full bg-black/5 hover:bg-black/10 text-gray-500 transition-colors" title="Minimize">
+             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <button id="btn-close" class="p-1.5 rounded-full bg-black/5 hover:bg-red-50 text-gray-500 hover:text-red-500 transition-colors" title="Dismiss">
+             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <!-- Audio Toggle -->
+        <button id="btn-audio-toggle" class="p-1.5 rounded-full bg-black/5 hover:bg-emerald-50 text-gray-500 hover:text-emerald-600 transition-colors" title="Toggle sounds">
+             <svg id="audio-icon-on" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+             <svg id="audio-icon-off" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+        </button>
+    </div>
+
+    <!-- Image Area -->
+    <div class="relative h-32 w-full overflow-hidden group">
+         <img src="/assets/sloth_placeholder.svg" class="w-full h-full object-contain transition-transform duration-700" alt="Sloth Header">
+         <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-900/40 to-transparent"></div>
+         <div class="absolute bottom-3 left-4 right-4 text-white">
+            <div class="flex items-center justify-between mb-1">
+                <div id="badge-status" class="px-2 py-0.5 bg-white/20 backdrop-blur-md rounded text-[9px] font-bold uppercase tracking-wider text-white border border-white/10">Partner Info</div>
+            </div>
+            <h3 id="card-title" class="font-serif text-lg font-bold leading-tight text-white drop-shadow-md">Manuel Antonio Tours</h3>
+         </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="p-4 bg-white relative z-10">
+        <p class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-2 border-b border-gray-100 pb-2">
+            Commercial Partner / Socio Comercial
+        </p>
+        <p id="card-desc" class="text-xs text-gray-600 leading-relaxed mb-4">
+            Visiting Manuel Antonio Park? <strong>Tickets are required.</strong> Our guided tours include full reservation service and entry fees.
+        </p>
+
+        <a id="card-cta" href="https://manuelantoniotours.devforhire.pro" target="_blank" class="flex items-center justify-center w-full py-2.5 bg-emerald-800 text-white text-xs font-bold rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300 transform active:scale-95 group-hover:gap-2">
+            <span>Visit Partner Site</span>
+            <svg class="w-3 h-3 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+
+        <!-- Enterprise Breadcrumb (SEO) -->
+        <div class="mt-3 pt-2 text-[9px] text-gray-400 text-center leading-tight">
+            Independent Service • Not operated by Soda Maricela
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+// ============================================
+// TourPopup.astro - PARTE 2: SCRIPT
+// Production-Ready | Bulletproof | High Performance
+// ============================================
+
+import { determinePopupState, type UserContext } from '../lib/marketingLogic';
+
+// ============================================
+// UTILITY: SAFE DOM OPERATIONS
+// ============================================
+class SafeDOM {
+    static get<T extends HTMLElement>(id: string): T | null {
+        try {
+            return document.getElementById(id) as T | null;
+        } catch (e) {
+            console.warn(`[SafeDOM] Failed to get element: ${id}`, e);
+            return null;
+        }
+    }
+
+    static query<T extends HTMLElement>(selector: string): T | null {
+        try {
+            return document.querySelector(selector) as T | null;
+        } catch (e) {
+            console.warn(`[SafeDOM] Failed to query: ${selector}`, e);
+            return null;
+        }
+    }
+
+    static addClass(el: HTMLElement | null, ...classes: string[]): void {
+        if (!el) return;
+        try {
+            el.classList.add(...classes);
+        } catch (e) {
+            console.warn('[SafeDOM] Failed to add classes', e);
+        }
+    }
+
+    static removeClass(el: HTMLElement | null, ...classes: string[]): void {
+        if (!el) return;
+        try {
+            el.classList.remove(...classes);
+        } catch (e) {
+            console.warn('[SafeDOM] Failed to remove classes', e);
+        }
+    }
+
+    static setText(el: HTMLElement | null, text: string): void {
+        if (!el) return;
+        try {
+            el.textContent = text;
+        } catch (e) {
+            console.warn('[SafeDOM] Failed to set text', e);
+        }
+    }
+
+    static setAttr(el: HTMLElement | null, attr: string, value: string): void {
+        if (!el) return;
+        try {
+            el.setAttribute(attr, value);
+        } catch (e) {
+            console.warn('[SafeDOM] Failed to set attribute', e);
+        }
+    }
+}
+
+// ============================================
+// UTILITY: SAFE STORAGE
+// ============================================
+class SafeStorage {
+    private static isAvailable(type: 'session' | 'local'): boolean {
+        try {
+            const storage = type === 'session' ? sessionStorage : localStorage;
+            const test = '__storage_test__';
+            storage.setItem(test, test);
+            storage.removeItem(test);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    static getSession(key: string, fallback: string = ''): string {
+        if (!this.isAvailable('session')) return fallback;
+        try {
+            return sessionStorage.getItem(key) ?? fallback;
+        } catch (e) {
+            console.warn('[SafeStorage] Session get failed', e);
+            return fallback;
+        }
+    }
+
+    static setSession(key: string, value: string): boolean {
+        if (!this.isAvailable('session')) return false;
+        try {
+            sessionStorage.setItem(key, value);
+            return true;
+        } catch (e) {
+            console.warn('[SafeStorage] Session set failed', e);
+            return false;
+        }
+    }
+
+    static getLocal(key: string, fallback: string = ''): string {
+        if (!this.isAvailable('local')) return fallback;
+        try {
+            return localStorage.getItem(key) ?? fallback;
+        } catch (e) {
+            console.warn('[SafeStorage] Local get failed', e);
+            return fallback;
+        }
+    }
+
+    static setLocal(key: string, value: string): boolean {
+        if (!this.isAvailable('local')) return false;
+        try {
+            localStorage.setItem(key, value);
+            return true;
+        } catch (e) {
+            console.warn('[SafeStorage] Local set failed', e);
+            return false;
+        }
+    }
+}
+
+// ============================================
+// SLOTH SOUND ENGINE - PRODUCTION GRADE
+// ============================================
+class SlothSoundEngine {
+    private audioContext: AudioContext | null = null;
+    private sounds: Map<string, AudioBuffer> = new Map();
+    private enabled: boolean = true;
+    private initialized: boolean = false;
+    private gainNode: GainNode | null = null;
+    private isSupported: boolean = true;
+    private playbackQueue: Set<AudioBufferSourceNode> = new Set();
+    private readonly MAX_CONCURRENT = 3;
+
+    constructor() {
+        this.enabled = SafeStorage.getLocal('sloth_sounds_enabled', 'true') === 'true';
+        this.isSupported = this.checkSupport();
+    }
+
+    private checkSupport(): boolean {
+        try {
+            const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+            return !!AudioContextClass;
+        } catch (e) {
+            console.warn('[SlothSound] Web Audio API not supported');
+            return false;
+        }
+    }
+
+    private async initAudioContext(): Promise<boolean> {
+        if (this.initialized) return true;
+        if (!this.isSupported) return false;
+
+        try {
+            const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+            this.audioContext = new AudioContextClass();
+            
+            if (!this.audioContext) {
+                throw new Error('Failed to create AudioContext');
+            }
+
+            this.gainNode = this.audioContext.createGain();
+            this.gainNode.gain.value = 0.25; // Subtle volume
+            this.gainNode.connect(this.audioContext.destination);
+            
+            await this.generateSlothSounds();
+            this.initialized = true;
+            return true;
+        } catch (error) {
+            console.warn('[SlothSound] Initialization failed:', error);
+            this.isSupported = false;
+            this.enabled = false;
+            return false;
+        }
+    }
+
+    private async generateSlothSounds(): Promise<void> {
+        if (!this.audioContext) return;
+
+        try {
+            // Nature/Beach Theme: Ocean, Water, Birds
+            // Short, subtle, relaxing
+            const soundGenerators = [
+                { name: 'hover', fn: () => this.createOceanBurst(0.15, 0.1) },
+                { name: 'click', fn: () => this.createWaterDrop(0.12, 600) },
+                { name: 'expand', fn: () => this.createWave(0.5, 'in') },
+                { name: 'minimize', fn: () => this.createWave(0.4, 'out') },
+                { name: 'close', fn: () => this.createChirp(0.15, 800) }
+            ];
+
+            for (const { name, fn } of soundGenerators) {
+                try {
+                    const buffer = fn();
+                    if (buffer) {
+                        this.sounds.set(name, buffer);
+                    }
+                } catch (e) {
+                    console.warn(`[NatureSound] Failed to generate ${name}:`, e);
+                }
+            }
+        } catch (error) {
+            console.warn('[NatureSound] Sound generation failed:', error);
+        }
+    }
+
+    private createOceanBurst(duration: number, volume: number): AudioBuffer | null {
+        try {
+            if (!this.audioContext) return null;
+            const sr = this.audioContext.sampleRate;
+            const buffer = this.audioContext.createBuffer(1, duration * sr, sr);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < buffer.length; i++) {
+                const t = i / sr;
+                // Pinkish noise (approximated)
+                const noise = (Math.random() * 2 - 1);
+                // Quick fade in, exponential fade out
+                const envelope = Math.min(t * 20, 1) * Math.exp(-t * 15);
+                data[i] = noise * envelope * volume;
+            }
+            return buffer;
+        } catch (e) { return null; }
+    }
+
+    private createWaterDrop(duration: number, freq: number): AudioBuffer | null {
+        try {
+            if (!this.audioContext) return null;
+            const sr = this.audioContext.sampleRate;
+            const buffer = this.audioContext.createBuffer(1, duration * sr, sr);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < buffer.length; i++) {
+                const t = i / sr;
+                // Pitch sweep down
+                const f = freq * (1 + 0.5 * Math.sin(2 * Math.PI * 5 * t)); 
+                const tone = Math.sin(2 * Math.PI * f * t);
+                const envelope = Math.sin(Math.PI * (t / duration)); 
+                data[i] = tone * envelope * 0.15;
+            }
+            return buffer;
+        } catch (e) { return null; }
+    }
+
+    private createWave(duration: number, type: 'in' | 'out'): AudioBuffer | null {
+        try {
+            if (!this.audioContext) return null;
+            const sr = this.audioContext.sampleRate;
+            const buffer = this.audioContext.createBuffer(1, duration * sr, sr);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < buffer.length; i++) {
+                const t = i / sr;
+                const progress = t / duration;
+                const noise = (Math.random() * 2 - 1);
+                
+                let envelope;
+                if (type === 'in') {
+                    // Swell
+                    envelope = Math.pow(progress, 2) * (1 - progress) * 2; 
+                } else {
+                    // Ebb
+                    envelope = (1 - progress) * Math.pow(progress, 0.5) * 2;
+                }
+                
+                data[i] = noise * envelope * 0.15;
+            }
+            return buffer;
+        } catch (e) { return null; }
+    }
+
+    private createChirp(duration: number, startFreq: number): AudioBuffer | null {
+        try {
+            if (!this.audioContext) return null;
+            const sr = this.audioContext.sampleRate;
+            const buffer = this.audioContext.createBuffer(1, duration * sr, sr);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < buffer.length; i++) {
+                const t = i / sr;
+                const freq = startFreq + Math.sin(2 * Math.PI * 20 * t) * 50; 
+                const tone = Math.sin(2 * Math.PI * freq * t);
+                const envelope = 1 - (t / duration);
+                data[i] = tone * envelope * 0.08;
+            }
+            return buffer;
+        } catch (e) { return null; }
+    }
+
+    async play(soundName: string): Promise<void> {
+        if (!this.enabled || !this.isSupported) return;
+
+        try {
+            // Init on first play
+            if (!this.initialized) {
+                const success = await this.initAudioContext();
+                if (!success) return;
+            }
+
+            if (!this.audioContext || !this.gainNode) return;
+
+            // Resume if suspended (autoplay policy)
+            if (this.audioContext.state === 'suspended') {
+                await this.audioContext.resume();
+            }
+
+            const buffer = this.sounds.get(soundName);
+            if (!buffer) {
+                console.warn(`[SlothSound] Sound not found: ${soundName}`);
+                return;
+            }
+
+            // Limit concurrent playback
+            if (this.playbackQueue.size >= this.MAX_CONCURRENT) {
+                return;
+            }
+
+            const source = this.audioContext.createBufferSource();
+            source.buffer = buffer;
+            source.connect(this.gainNode);
+            
+            // Track active sources
+            this.playbackQueue.add(source);
+            
+            source.onended = () => {
+                this.playbackQueue.delete(source);
+            };
+
+            source.start(0);
+        } catch (error) {
+            console.warn('[SlothSound] Playback failed:', error);
+        }
+    }
+
+    toggle(): boolean {
+        this.enabled = !this.enabled;
+        SafeStorage.setLocal('sloth_sounds_enabled', String(this.enabled));
+        return this.enabled;
+    }
+
+    isEnabled(): boolean {
+        return this.enabled && this.isSupported;
+    }
+
+    cleanup(): void {
+        try {
+            // Stop all active sounds
+            this.playbackQueue.forEach(source => {
+                try {
+                    source.stop();
+                } catch (e) {
+                    // Already stopped
+                }
+            });
+            this.playbackQueue.clear();
+
+            // Close audio context
+            if (this.audioContext && this.audioContext.state !== 'closed') {
+                this.audioContext.close();
+            }
+        } catch (e) {
+            console.warn('[SlothSound] Cleanup failed:', e);
+        }
+    }
+}
+
+// ============================================
+// TOUR WIDGET - PRODUCTION GRADE
+// ============================================
+class TourWidget {
+    private root: HTMLElement | null = null;
+    private trigger: HTMLElement | null = null;
+    private card: HTMLElement | null = null;
+    private soundEngine: SlothSoundEngine;
+    private elements: {
+        title: HTMLElement | null;
+        desc: HTMLElement | null;
+        cta: HTMLElement | null;
+        badge: HTMLElement | null;
+        triggerLabel: HTMLElement | null;
+        audioToggle: HTMLElement | null;
+        audioIconOn: HTMLElement | null;
+        audioIconOff: HTMLElement | null;
+    };
+    private state: {
+        isClosed: boolean;
+        isMinimized: boolean;
+        isInitialized: boolean;
+    };
+    private cleanupFns: Array<() => void> = [];
+    private animationTimeouts: number[] = [];
+
+    constructor() {
+        this.soundEngine = new SlothSoundEngine();
+        
+        this.elements = {
+            title: null,
+            desc: null,
+            cta: null,
+            badge: null,
+            triggerLabel: null,
+            audioToggle: null,
+            audioIconOn: null,
+            audioIconOff: null,
+        };
+
+        this.state = {
+            isClosed: SafeStorage.getSession('mw_closed') === 'true',
+            isMinimized: SafeStorage.getSession('mw_minimized') === 'true',
+            isInitialized: false,
+        };
+    }
+
+    async init(): Promise<boolean> {
+        try {
+            // 1. Get DOM references
+            if (!this.initDOM()) {
+                console.warn('[TourWidget] DOM initialization failed');
+                return false;
+            }
+
+            // 2. Run business logic
+            const decision = this.runBusinessLogic();
+            if (!decision) {
+                console.log('[TourWidget] Widget suppressed by logic');
+                return false;
+            }
+
+            // 3. Check closure state
+            if (this.state.isClosed) {
+                console.log('[TourWidget] Widget closed by user');
+                return false;
+            }
+
+            // 4. Configure content
+            this.applyContent(decision.mode);
+
+            // 5. Update UI
+            this.updateAudioToggleUI();
+
+            // 6. Render initial state (with delay)
+            this.scheduleInitialRender();
+
+            // 7. Bind events
+            this.bindEvents();
+
+            this.state.isInitialized = true;
+            return true;
+        } catch (error) {
+            console.error('[TourWidget] Initialization error:', error);
+            return false;
+        }
+    }
+
+    private initDOM(): boolean {
+        try {
+            this.root = SafeDOM.get('tour-widget-root');
+            this.trigger = SafeDOM.get('widget-trigger');
+            this.card = SafeDOM.get('widget-card');
+
+            if (!this.root || !this.trigger || !this.card) {
+                return false;
+            }
+
+            this.elements = {
+                title: SafeDOM.get('card-title'),
+                desc: SafeDOM.get('card-desc'),
+                cta: SafeDOM.get('card-cta'),
+                badge: SafeDOM.get('badge-status'),
+                triggerLabel: SafeDOM.get('trigger-label'),
+                audioToggle: SafeDOM.get('btn-audio-toggle'),
+                audioIconOn: SafeDOM.get('audio-icon-on'),
+                audioIconOff: SafeDOM.get('audio-icon-off'),
+            };
+
+            return true;
+        } catch (error) {
+            console.error('[TourWidget] DOM init error:', error);
+            return false;
+        }
+    }
+
+    private runBusinessLogic(): { shouldShow: boolean; mode: 'standard' | 'tuesday_closed' | 'hidden' } | null {
+        try {
+            const context: UserContext = {
+                date: new Date(),
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                locale: navigator.language || (navigator as any).userLanguage || 'en-US'
+            };
+
+            return determinePopupState(context);
+        } catch (error) {
+            console.warn('[TourWidget] Business logic error:', error);
+            // Fallback to showing standard mode
+            return { shouldShow: true, mode: 'standard' };
+        }
+    }
+
+    private scheduleInitialRender(): void {
+        const timeout = window.setTimeout(() => {
+            if (this.state.isMinimized) {
+                this.showTrigger();
+            } else {
+                this.showCard();
+            }
+        }, 1000);
+
+        this.animationTimeouts.push(timeout);
+    }
+
+    private bindEvents(): void {
+        try {
+            // Trigger click
+            if (this.trigger) {
+                const onClick = () => {
+                    this.soundEngine.play('expand');
+                    this.showCard();
+                };
+                this.trigger.addEventListener('click', onClick);
+                this.cleanupFns.push(() => this.trigger?.removeEventListener('click', onClick));
+            }
+
+            // Trigger hover
+            if (this.trigger) {
+                const onHover = () => this.soundEngine.play('hover');
+                this.trigger.addEventListener('mouseenter', onHover);
+                this.cleanupFns.push(() => this.trigger?.removeEventListener('mouseenter', onHover));
+            }
+
+            // Minimize button
+            const btnMinimize = SafeDOM.get('btn-minimize');
+            if (btnMinimize) {
+                const onClick = (e: Event) => {
+                    e.stopPropagation();
+                    this.soundEngine.play('minimize');
+                    this.minimize();
+                };
+                btnMinimize.addEventListener('click', onClick);
+                this.cleanupFns.push(() => btnMinimize.removeEventListener('click', onClick));
+            }
+
+            // Close button
+            const btnClose = SafeDOM.get('btn-close');
+            if (btnClose) {
+                const onClick = (e: Event) => {
+                    e.stopPropagation();
+                    this.soundEngine.play('close');
+                    this.closeForever();
+                };
+                btnClose.addEventListener('click', onClick);
+                this.cleanupFns.push(() => btnClose.removeEventListener('click', onClick));
+            }
+
+            // Audio Toggle
+            const btnAudio = SafeDOM.get('btn-audio-toggle');
+            if (btnAudio) {
+                 const onClick = (e: Event) => {
+                    e.stopPropagation();
+                    this.toggleAudio();
+                };
+                btnAudio.addEventListener('click', onClick);
+                this.cleanupFns.push(() => btnAudio.removeEventListener('click', onClick));
+            }
+        } catch (error) {
+            console.warn('[TourWidget] Bind events failed', error);
+        }
+    }
+
+    private showCard(): void {
+        this.state.isMinimized = false;
+        SafeStorage.setSession('mw_minimized', 'false');
+
+        if (this.trigger) {
+            SafeDOM.removeClass(this.trigger, 'translate-y-0', 'opacity-100', 'pointer-events-auto');
+            SafeDOM.addClass(this.trigger, 'translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+        
+        if (this.card) {
+             SafeDOM.removeClass(this.card, 'translate-y-10', 'opacity-0', 'scale-95', 'pointer-events-none');
+             SafeDOM.addClass(this.card, 'translate-y-0', 'opacity-100', 'scale-100', 'pointer-events-auto');
+        }
+    }
+
+    private showTrigger(): void {
+        this.state.isMinimized = true;
+        SafeStorage.setSession('mw_minimized', 'true');
+
+        if (this.card) {
+            SafeDOM.removeClass(this.card, 'translate-y-0', 'opacity-100', 'scale-100', 'pointer-events-auto');
+            SafeDOM.addClass(this.card, 'translate-y-10', 'opacity-0', 'scale-95', 'pointer-events-none');
+        }
+
+        if (this.trigger) {
+            SafeDOM.removeClass(this.trigger, 'translate-y-20', 'opacity-0', 'pointer-events-none');
+            SafeDOM.addClass(this.trigger, 'translate-y-0', 'opacity-100', 'pointer-events-auto');
+        }
+    }
+
+    private minimize(): void {
+        this.showTrigger();
+    }
+
+    private closeForever(): void {
+        this.state.isClosed = true;
+        SafeStorage.setSession('mw_closed', 'true');
+        
+        // Hide everything
+        if (this.card) {
+            SafeDOM.addClass(this.card, 'translate-y-10', 'opacity-0', 'scale-95', 'pointer-events-none');
+        }
+        if (this.trigger) {
+             SafeDOM.addClass(this.trigger, 'translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+        
+        // Optional: remove from DOM after animation
+        setTimeout(() => {
+            if (this.root) this.root.remove();
+            this.cleanup();
+        }, 1000);
+    }
+
+    private toggleAudio(): void {
+        this.soundEngine.toggle();
+        this.updateAudioToggleUI();
+        if (this.soundEngine.isEnabled()) {
+            this.soundEngine.play('click');
+        }
+    }
+
+    private updateAudioToggleUI(): void {
+        const { audioToggle, audioIconOn, audioIconOff } = this.elements;
+        if (!audioToggle || !audioIconOn || !audioIconOff) return;
+
+        if (this.soundEngine.isEnabled()) {
+            SafeDOM.removeClass(audioIconOn, 'hidden');
+            SafeDOM.addClass(audioIconOff, 'hidden');
+            SafeDOM.addClass(audioToggle, 'text-emerald-600', 'bg-emerald-50');
+            SafeDOM.removeClass(audioToggle, 'text-gray-500');
+        } else {
+            SafeDOM.addClass(audioIconOn, 'hidden');
+            SafeDOM.removeClass(audioIconOff, 'hidden');
+            SafeDOM.addClass(audioToggle, 'text-gray-500');
+            SafeDOM.removeClass(audioToggle, 'text-emerald-600', 'bg-emerald-50');
+        }
+    }
+
+    private applyContent(mode: 'standard' | 'tuesday_closed' | 'hidden'): void {
+        if (mode === 'hidden') {
+            this.state.isClosed = true; 
+            return;
+        }
+        if (mode === 'tuesday_closed' && this.elements.desc) {
+            SafeDOM.setText(this.elements.desc, 'Soda Maricela is closed on Tuesdays. We recommend visiting Manuel Antonio Tours!');
+        }
+    }
+    
+    private cleanup(): void {
+         this.cleanupFns.forEach(fn => fn());
+         this.soundEngine.cleanup();
+    }
+}
+
+// Initialize
+(function() {
+    if (typeof window === 'undefined') return;
+
+    const init = () => {
+        const widget = new TourWidget();
+        widget.init();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>

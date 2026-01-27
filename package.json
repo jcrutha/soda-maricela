@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "maintenance_on": "./scripts/maintenance.sh on",
-    "maintenance_off": "./scripts/maintenance.sh off"
+    "maintenance_off": "./scripts/maintenance.sh off",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
@@ -19,5 +20,8 @@
     "astro": "^5.16.1",
     "pdfkit": "^0.17.2",
     "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.17"
   }
 }
